@@ -1,105 +1,380 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Alfateh</title>
+    <link rel="shortcut icon" type="image/png" href="img/icon.png">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("WKI-lDGa-TD0neLNV");
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+           const form=document.getElementById('contact-form');
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+           form.addEventListener('submit', function (event) {
+                event.preventDefault();
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <!-- <base href="/"> -->
+                const snackBar = document.getElementById('snackbar');
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Flutter and Dart regular expression tester.">
+                snackBar.classList.add('show');
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="DART REGULAR EXPRESSION">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-
-  <title>DART REGULAR EXPRESSION</title>
-  <link rel="manifest" href="manifest.json">
+                emailjs.sendForm('service_qbvg0im', 'template_uf53t7i', this)
+                    .then(function () {
+                        form.reset();
+                        snackBar.classList.remove('show');
+                        alert("Your message has been sent!!");
+                    }, function (error) {
+                        snackBar.classList.remove('show');
+                        alert("Failed to send message\nerror : " + error.error);
+                    });
+            });
+        }
+    </script>
 </head>
-<body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    var serviceWorkerVersion = '1748240442';
-    var scriptLoaded = false;
-    function loadMainDartJs() {
-      if (scriptLoaded) {
-        return;
-      }
-      scriptLoaded = true;
-      var scriptTag = document.createElement('script');
-      scriptTag.src = 'main.dart.js';
-      scriptTag.type = 'application/javascript';
-      document.body.append(scriptTag);
-    }
 
-    if ('serviceWorker' in navigator) {
-      // Service workers are supported. Use them.
-      window.addEventListener('load', function () {
-        // Wait for registration to finish before dropping the <script> tag.
-        // Otherwise, the browser will load the script multiple times,
-        // potentially different versions.
-        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
-        navigator.serviceWorker.register(serviceWorkerUrl)
-          .then((reg) => {
-            function waitForActivation(serviceWorker) {
-              serviceWorker.addEventListener('statechange', () => {
-                if (serviceWorker.state == 'activated') {
-                  console.log('Installed new service worker.');
-                  loadMainDartJs();
-                }
-              });
-            }
-            if (!reg.active && (reg.installing || reg.waiting)) {
-              // No active web worker and we have installed or are installing
-              // one for the first time. Simply wait for it to activate.
-              waitForActivation(reg.installing || reg.waiting);
-            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
-              // When the app updates the serviceWorkerVersion changes, so we
-              // need to ask the service worker to update.
-              console.log('New service worker available.');
-              reg.update();
-              waitForActivation(reg.installing);
-            } else {
-              // Existing service worker is still good.
-              console.log('Loading app from service worker.');
-              loadMainDartJs();
-            }
-          });
+<body class="main-content">
+    <header class="section sec1 header active" id="home">
+        <div class="header-content">
+            <div class="name">
+                <div class="first-name">Mohammed</div>
+                <div class="last-name">Alfateh</div>
+            </div>
+            <br>
+            <div class="header-text-warpper">
+                <div class="static-text">I'm</div>
+                <ul class="dynamic-text">
+                    <li><span>FullStack Developer</span></li>
+                    <li><span>Mobile Developer</span></li>
+                    <li><span>Backend Developer</span></li>
+                    <li><span>Web Developer</span></li>
+                </ul>
+            </div>
+            <div class="about-me-icons">
+                <div class="hover-items">
+                    <div class="icons">
+                        <a href="https://www.linkedin.com/in/mohammed-alfateh-612b611b7/" target="_blank" class="icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/7mada123" target="_blank" class="icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://stackoverflow.com/users/13111345/mohammed-alfateh" target="_blank"
+                            class="icon">
+                            <i class="fab fa-stack-overflow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="section sec2 about" id="about">
+            <div class="main-title">
+                <h2>About <span>me</span><span class="bg-text">Know me</span></h2>
+            </div>
 
-        // If service worker doesn't succeed in a reasonable amount of time,
-        // fallback to plaint <script> tag.
-        setTimeout(() => {
-          if (!scriptLoaded) {
-            console.warn(
-              'Failed to load app from service worker. Falling back to plain <script> tag.',
-            );
-            loadMainDartJs();
-          }
-        }, 4000);
-      });
-    } else {
-      // Service workers not supported. Just drop the <script> tag.
-      loadMainDartJs();
-    }
-  </script>
+            <div class="who-am-i-title">Who am I?</div>
+            <div class="who-am-i-answer">I'm Mohammed Alfateh, a FullStack Developer</div>
+            <div class="who-am-i-body">
+                I'm a software developer and have been creating apps for years, which bring the company's ideas to life.
+                I help turn a vision and an idea into useful and meaningful software products. Having the ability to
+                turn requirements into useful software helps me prioritize, quickly recur, and submit tasks quickly.
+                Take a look at my portfolio work and let's see if we can work together on your next project.</div>
+            <hr class="solid">
+            <div class="about-me-bottom">
+                <a class="email" href="mailto:mohammedalfatehabdalmonem@gmail.com">
+                    Gmail</a>
+                <div class="about-me-btns">
+                    <div class="btn-con">
+                        <a href="https://drive.google.com/file/d/1CAkUyXIIbXHzQ-N-f3xZZl_LmgjtyEpF/view?usp=sharing"
+                            target="_blank" class="main-btn">
+                            <span class="btn-text">Download CV</span>
+                            <span class="btn-icon"><i class="fas fa-download"></i></span>
+                        </a>
+                    </div>
+                    <div class="btn-con">
+                        <a href="#" class="main-btn" id="my-work-btn">
+                            <span class="btn-text">My work</span>
+                            <span class="btn-icon"><i class="fas fa-briefcase"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="about-me-icons">
+                <div class="hover-items">
+                    <div class="icons">
+                        <a href="https://www.linkedin.com/in/mohammed-alfateh-612b611b7/" target="_blank" class="icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/7mada123" target="_blank" class="icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://stackoverflow.com/users/13111345/mohammed-alfateh" target="_blank"
+                            class="icon">
+                            <i class="fab fa-stack-overflow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section sec3" id="portfolio">
+            <div class="main-title">
+                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
+            </div>
+            <p class="port-text">
+                Showcasing complete functional projects demonstrate what I can bring to your project. I built these
+                projects form the ground up to demonstrate my skills. Contact me to get a complete code walk through.
+            </p>
+            <div class="portfolios">
+                <div class="portfolio-item">
+                    <div class="image">
+                        <img src="img/disposable_cached_images-logo.png" alt="" loading="lazy">
+                    </div>
+                    <div class="hover-items">
+                        <h3>disposable cached images package</h3>
+                        <div class="icons">
+                            <a href="https://github.com/7mada123/disposable_cached_images" target="_blank" class="icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://pub.dev/packages/disposable_cached_images" target="_blank" class="icon">
+                                <i class="fa fa-link" title="Open on pub.dev"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="image">
+                        <img src="img/mat_logo.png" alt="">
+                    </div>
+                    <div class="hover-items">
+                        <h3>My Anime Track</h3>
+                        <div class="icons">
+                            <a href="https://play.google.com/store/apps/details?id=com.hamaadaapps.myanimetrack"
+                                target="_blank" class="icon">
+                                <i class="fab fa-android"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="image">
+                        <img src="img/regex-logo.png" alt="" loading="lazy">
+                    </div>
+                    <div class="hover-items">
+                        <h3>Dart regular expression</h3>
+                        <div class="icons">
+
+                            <a href="https://github.com/7mada123/dart_regex" target="_blank" class="icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+
+                            <a href="https://play.google.com/store/apps/details?id=com.hamada.dart_regex_app"
+                                target="_blank" class="icon">
+                                <i class="fab fa-android"></i>
+                            </a>
+
+                            <a href="https://drive.google.com/file/d/1U7AsBiKy4qce-24ma6wfceuTB8Qwkf4m/view"
+                                target="_blank" class="icon">
+                                <i class="fab fa-windows"></i>
+                            </a>
+
+                            <a href="https://7mada123.github.io/#/" target="_blank" class="icon">
+                                <i class="fab fa-chrome"></i>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="image">
+                        <img src="img/todo-logo.png" alt="" loading="lazy">
+                    </div>
+                    <div class="hover-items">
+                        <h3>NEUMTODO</h3>
+                        <div class="icons">
+
+                            <a href="https://github.com/7mada123/neumtodo" target="_blank" class="icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+
+                            <a href="https://play.google.com/store/apps/details?id=com.hamada.neumtodo" target="_blank"
+                                class="icon">
+                                <i class="fab fa-android"></i>
+                            </a>
+
+                            <a href="https://drive.google.com/file/d/1j9NH4X0V6uhHiJ2MY73ZR3asrf_cEgZl/view?usp=sharing"
+                                target="_blank" class="icon">
+                                <i class="fab fa-windows"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section sec4 " id="skills">
+            <div class="skills-content">
+                <div class="main-title">
+                    <h2>My <span>skills</span><span class="bg-text">My skills</span></h2>
+                </div>
+                <div class="about-my-skills">
+                    I am a crative problem solver, I build fullstack apps using dart, flutter, shelf, SQL, PostgreSQL,
+                    Docker, Docker Swarm, HTML5, CSS and more. I have
+                    highlighted my key technical skills that I will bring to your project.
+                </div>
+                <div class="skills">
+                    <div class="skill">
+                        <img src="img/dart-logo.png" alt="" loading="lazy">
+                        <div class="skill-text">
+                            <h4>
+                                Dart
+                            </h4>
+                            <p>
+                                Dart is a client-optimized language for developing fast apps on any platform, I use Dart
+                                on a daily basis to build front-end and backend applications.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <img src="img/flutter-logo.png" alt="" loading="lazy">
+                        <div class="skill-text">
+                            <h4>
+                                Flutter
+                            </h4>
+                            <p>
+                                Flutter is an open-source UI software development kit created by Google, I use Flutter
+                                to create front-end applications for multiple platforms, including mobile, desktop, and
+                                web.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <img src="img/dart-shelf-logo.png" alt="" loading="lazy">
+                        <div class="skill-text">
+                            <h4>
+                                Shelf
+                            </h4>
+                            <p>
+                                Shelf is a model for web server middleware created by Google Dart team, I
+                                use Shelf to build web servers.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <img src="img/postgresql-logo.png" alt="" loading="lazy">
+                        <div class="skill-text">
+                            <h4>
+                                PostgreSQL
+                            </h4>
+                            <p>
+                                PostgreSQL is a free and open-source relational database management system emphasizing
+                                extensibility and SQL compliance, I use PostgreSQL when building web servers with Shelf.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <img src="img/docker-logo.png" alt="" loading="lazy">
+                        <div class="skill-text">
+                            <h4>
+                                Docker
+                            </h4>
+                            <p>
+                                Docker is a tool for building and deploying applications, I use Docker and Docker Swarm
+                                to bundle my web server and dependencies into containers - standard executable
+                                components that make development progress faster and easier to maintain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section sec5 contact" id="contact">
+            <div class="contact-container">
+                <div class="main-title">
+                    <h2>Contact <span>Me</span><span class="bg-text">Contact Me</span></h2>
+                </div>
+                <div class="contact-content-con">
+                    <p>Feel free to contact me anytime</p>
+                    <div class="right-contact">
+                        <form action="" class="contact-form" id="contact-form">
+                            <div class="input-control i-c-2">
+                                <input type="text" required placeholder="YOUR NAME" name="user_name">
+                                <input type="email" required placeholder="YOUR EMAIL" name="user_email">
+                            </div>
+                            <div class="input-control">
+                                <input type="text" required placeholder="ENTER SUBJECT" name="user_subject">
+                            </div>
+                            <div class="input-control">
+                                <textarea name="user_message" cols="15" rows="8" placeholder="Message Here..."
+                                    required></textarea>
+                                <br>
+                                <br>
+                                <!-- <div class="submit-btn" id="email-sender-btn">
+                                    <a class="main-btn">
+                                        <span class="btn-text">
+                                            <input type="submit" value="Send Message" class="submit-btn-input"></span>
+                                        <span class="btn-icon">
+                                            <i class="fa fa-paper-plane"></i>
+                                        </span>
+                                    </a>
+                                </div> -->
+                                <button type="submit" class="submit-btn">
+                                    <div class="btn-con">
+                                        <a class="main-btn">
+                                            <span class="btn-text">Send Message</span>
+                                            <span class="btn-icon"><i class="fa fa-paper-plane"></i></span>
+                                        </a>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="controlls">
+        <div class="control  control-1 active-btn" data-id="home" title="Home">
+            <i class="fas fa-home"></i>
+        </div>
+        <div class="control control-2 " data-id="about" title="About">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="control control-3" data-id="portfolio" title="Portfolio">
+            <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="control control-4" data-id="skills" title="Skills">
+            <i class="fa fa-graduation-cap"></i>
+        </div>
+        <div class="control control-5" data-id="contact" title="Contact">
+            <i class="fas fa-envelope-open"></i>
+        </div>
+    </div>
+
+    <div class="theme-btn" title="Toggle Theme">
+        <i class="fas fa-adjust"></i>
+    </div>
+
+    <div id="snackbar">Sending message..</div>
+
+    <script defer src="main.dart.js"></script>
 </body>
+
 </html>
